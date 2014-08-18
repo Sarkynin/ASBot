@@ -15,7 +15,7 @@ class SpeedPlugin
     if details == "FE"
       currentevo, finalevo = 1.0, 1.0
     elsif %w[1/2 1/3 2/3].include?(details)
-      detailsarray = details.split
+      detailsarray = details.split("/")
       currentevo, finalevo = Float(detailsarray[0]), Float(detailsarray[1])
     elsif details == ''
       calcaccuracy = false
