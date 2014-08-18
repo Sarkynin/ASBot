@@ -5,7 +5,7 @@ class ASBStatsPlugin
   include Cinch::Plugin
   
   match /^(!|@)asbstats (.+)/
-  def execute(m, msgtype, move)
+  def execute(m, msgtype, poke)
     pokefound = false
 
     $pokesheet.rows.each do |row|
