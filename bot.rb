@@ -37,7 +37,7 @@ bot = Cinch::Bot.new do
   end
 
   on :message, 'test' do |m|
-    puts ENV["quotes_url"]
+    m.user.notice ENV["quotes_url"] if m.user.nick == 'apt-get'
   end
 
 end
