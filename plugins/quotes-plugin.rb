@@ -30,7 +30,7 @@ class QuotesPlugin
     new_quote_index = existing_quotes.index(new_quote)
     existing_quotes[new_quote_index]["id"] = new_quote_index + 1
     # write it to the gist
-    Gist.gist(YAML.dump(existing_quotes), :update => @quotes_address, :filename => 'quotes.rb')
+    Gist.gist(YAML.dump(existing_quotes), {:update => @quotes_address, :filename => 'quotes.rb'})
     # send reply that quote was added
     m.reply "#{m.user.nick}: Quote successfully added as ##{new_quote_index + 1}."
   end
