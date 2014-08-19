@@ -1,3 +1,7 @@
+# The original script is made by Caitlin Woodward
+# This is a modified version made to work with Github Gists
+# original repo here: https://github.com/caitlin/cinch-quotes
+
 require 'cinch'
 
 class QuotesPlugin
