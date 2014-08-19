@@ -4,11 +4,11 @@ require_relative '../utils/utils.rb'
 
 class RollPlugin
   include Cinch::Plugin
-  rng = Random.new
 
   match /^(!|@)roll(\d*)? ?(\d*)?/
 
   def execute(m, msgtype, numberofdices, rollnumber)
+    rng = Random.new
     if numberofdices.to_i >= 150 && msgtype == '@'
       msgtype_reply(m, msgtype, "The roll is too big. Please consider using less than 150 rolls multiple times to achieve your result.")
     end
