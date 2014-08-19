@@ -36,6 +36,10 @@ bot = Cinch::Bot.new do
     $naturesheet.rows[0][0]
   end
 
+  on :message, 'test' do |m|
+    puts c.plugins.options[QuotesPlugin][:quotes_address]
+  end
+
 end
 
 bot.start
