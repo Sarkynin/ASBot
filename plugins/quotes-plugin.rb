@@ -3,6 +3,7 @@
 # original repo here: https://github.com/caitlin/cinch-quotes
 
 require 'cinch'
+require 'open-uri'
 
 class QuotesPlugin
   include Cinch::Plugin
@@ -37,11 +38,15 @@ class QuotesPlugin
   end
 
   def quote(m, search = nil)
+    puts "BEGINNING QUOTE SEARCH"
     quotes = get_quotes.delete_if{ |q| q["deleted"] == true }
+    puts "THE QUOTES ARE #{quotes}"
     if search.nil? # we are pulling random
+      puts "PULLING RANDOM"
       quote = quotes.sample
       m.reply "#{m.user.nick}: ##{quote["id"]} - #{quote["quote"]}"
     elsif search.to_i != 0 # then we are searching by id
+      puts "SEARCHING BY ID"
       quote = quotes.find{|q| q["id"] == search.to_i }
       if quote.nil?
         m.reply "#{m.user.nick}: No quotes found."
@@ -49,6 +54,7 @@ class QuotesPlugin
         m.reply "#{m.user.nick}: ##{quote["id"]} - #{quote["quote"]}"
       end
     else 
+      puts "SEARCHING BY NAME"
       quotes.keep_if{ |q| q["quote"].downcase.include?(search.downcase) }
       if quotes.empty?
         m.reply "#{m.user.nick}: No quotes found."
