@@ -36,10 +36,6 @@ bot = Cinch::Bot.new do
     $naturesheet.rows[0][0]
   end
 
-  on :message, 'test' do |m|
-    m.user.notice ENV["quotes_url"] if m.user.nick == 'apt-get'
-  end
-
 end
 
 bot.start

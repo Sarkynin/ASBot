@@ -7,6 +7,8 @@ $typesheet = $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRG
 $movesheet = $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE").worksheets[8]
 $itemsheet = $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE").worksheets[9].rows + $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE").worksheets[10].rows + $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE").worksheets[11].rows
 
+Gist.login!(:username => ENV['githubnick'], :password => ENV["githubpass"])
+
 module BotUtils
   def self.condense_name(name)
     return name.downcase.gsub(/[^A-Za-z0-9]/, '')
