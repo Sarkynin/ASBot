@@ -3,7 +3,7 @@ require 'cinch'
 class BlamePlugin
   include Cinch::Plugin
   
-  match /^!blame (.+)/
+  match /^!blame (.+)/i
 
   def execute(m, user)
     m.reply("Yeah, it's all #{user}'s fault. Shame on you.")

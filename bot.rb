@@ -1,5 +1,6 @@
 require 'cinch'
 require 'google_drive'
+require 'gist'
 require_relative './plugins/speed-plugin'
 require_relative './plugins/roll-plugin'
 
@@ -12,6 +13,7 @@ require_relative './plugins/asbtype-plugin'
 
 require_relative './plugins/blame-plugin'
 require_relative './plugins/no-plugin'
+require_relative './plugins/quotes-plugin'
 
 
 bot = Cinch::Bot.new do
@@ -21,7 +23,8 @@ bot = Cinch::Bot.new do
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = ""
-    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin]
+    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin]
+    c.plugins.options[QuotesPlugin] = {:quotes_address => 'https://gist.github.com/Sarkynin/3f146714e4fc204ae545'}
   end
 
   on :connect do |m|

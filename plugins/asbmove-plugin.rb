@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBMovePlugin
   include Cinch::Plugin
 
-  match /^(!|@)asbmove (.+)/
+  match /^(!|@)asbmove (.+)/i
 
   def execute(m, msgtype, move)
     

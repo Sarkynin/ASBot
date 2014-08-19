@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBStatsPlugin
   include Cinch::Plugin
   
-  match /^(!|@)asbstats (.+)/
+  match /^(!|@)asbstats (.+)/i
   def execute(m, msgtype, poke)
     pokefound = false
 

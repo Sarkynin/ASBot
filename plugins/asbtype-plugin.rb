@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBTypePlugin
   include Cinch::Plugin
   
-  match /^(!|@)asbtype (.+)/
+  match /^(!|@)asbtype (.+)/i
   def execute(m, msgtype, poketype)
     typefound = false
     $typesheet.rows.each do |row|

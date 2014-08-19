@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBilityPlugin
   include Cinch::Plugin
   
-  match /^(!|@)asbility (.+)/
+  match /^(!|@)asbility (.+)/i
 
   def execute(m, msgtype, ability)
     abilityfound = false

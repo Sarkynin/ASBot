@@ -5,7 +5,7 @@ require_relative '../utils/utils.rb'
 class RollPlugin
   include Cinch::Plugin
 
-  match /^(!|@)roll(\d*)? ?(\d*)?/
+  match /^(!|@)roll(\d*)? ?(\d*)?/i
 
   def execute(m, msgtype, numberofdices, rollnumber)
     rng = Random.new

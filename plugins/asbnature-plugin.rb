@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBNaturePlugin
   include Cinch::Plugin
 
-  match /^(!|@)asbnature (\w+) ?(.*)?/
+  match /^(!|@)asbnature (\w+) ?(.*)?/i
 
   def execute(m, msgtype, nature, moodycheck)
     naturefound = false

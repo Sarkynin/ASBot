@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ASBItemPlugin
   include Cinch::Plugin
   
-  match /^(!|@)asbitem (.+)/
+  match /^(!|@)asbitem (.+)/i
 
   def execute(m, msgtype, item)
     itemfound = false
