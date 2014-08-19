@@ -4,6 +4,7 @@ GEM
     cinch (2.1.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    gist (4.2.1)
     google_drive (0.3.10)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
@@ -27,4 +28,5 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  gist
   google_drive
