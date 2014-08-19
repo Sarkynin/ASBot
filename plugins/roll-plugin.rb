@@ -9,7 +9,7 @@ class RollPlugin
 
   def execute(m, msgtype, numberofdices, rollnumber)
     rng = Random.new
-    if numberofdices.to_i >= 150 && msgtype == '@'
+    if numberofdices.to_i >= 150
       BotUtils.msgtype_reply(m, msgtype, "The roll is too big. Please consider using less than 150 rolls multiple times to achieve your result.")
     else
       rollnumber.length == 0 ? rollnumber = 10000 : rollnumber = rollnumber.to_i
