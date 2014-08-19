@@ -14,7 +14,7 @@ require_relative './plugins/asbtype-plugin'
 require_relative './plugins/blame-plugin'
 require_relative './plugins/no-plugin'
 require_relative './plugins/quotes-plugin'
-
+testvariable = String.new
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -37,7 +37,7 @@ bot = Cinch::Bot.new do
   end
 
   on :message, 'test' do |m|
-    puts c.plugins.options[QuotesPlugin][:quotes_address]
+    puts ENV["quotes_url"]
   end
 
 end
