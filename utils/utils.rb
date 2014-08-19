@@ -1,3 +1,5 @@
+require 'gist'
+
 $googledrivesession = GoogleDrive.login(ENV["googledrivelogin"], ENV["googledrivepass"])
 
 $pokesheet = $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE").worksheets[4]
