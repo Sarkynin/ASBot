@@ -10,7 +10,7 @@ class ComboPlugin
   def combosame(m, msgtype, energy)
     energycost = (energy.to_f + 2) * 3.5
     if energycost.round(1) - energycost.to_i == 0.5
-      energycost = energycost.round + 0.5
+      energycost = energycost.round - 0.5
     else
       energycost = energycost.round
     end
@@ -20,7 +20,7 @@ class ComboPlugin
   def combodifferent(m, msgtype, energy1, energy2)
     energycost = (energy1.to_f + energy2.to_f) * 1.5
     if energycost.round(1) - energycost.to_i == 0.5
-      energycost = energycost.round + 0.5
+      energycost = energycost.round - 0.5
     else
       energycost = energycost.round
     end
