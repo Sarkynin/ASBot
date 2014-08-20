@@ -9,7 +9,7 @@ class ASBStatsPlugin
     pokefound = false
 
     $pokesheet.rows.each do |row|
-      if BotUtils.condense_name(poke[0..3]) =~ /(mega|primal)/ && (BotUtils.condense_name(poke) != "meganium"
+      if BotUtils.condense_name(poke[0..3]) =~ /(mega|primal)/ && BotUtils.condense_name(poke) != "meganium"
 
         if BotUtils.condense_name(row[1]) == BotUtils.condense_name(poke.sub('mega')) && row[0] =~ /(Primal|Mega)/
           if row[3].include?(row[4])
