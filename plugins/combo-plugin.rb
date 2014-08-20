@@ -4,8 +4,8 @@ require_relative '../utils/utils.rb'
 class ComboPlugin
   include Cinch::Plugin
 
-  match /^(!|@)combo (.+)/i,           method: :combosame
-  match /^(!|@)combo (.+), *(.+)/i,    method: :combodifferent
+  match /^(!|@)combo (\d+)/i,           method: :combosame
+  match /^(!|@)combo (\d+), *(\d+)/i,    method: :combodifferent
 
   def combosame(m, msgtype, energy)
     energycost = (energy.to_f + 2) * 3.5
