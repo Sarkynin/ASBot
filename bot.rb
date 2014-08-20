@@ -11,6 +11,7 @@ require_relative './plugins/asbitem-plugin'
 require_relative './plugins/asbnature-plugin'
 require_relative './plugins/asbtype-plugin'
 require_relative './plugins/profile-plugin'
+require_relative './plugins/combo-plugin'
 
 require_relative './plugins/blame-plugin'
 require_relative './plugins/no-plugin'
@@ -24,7 +25,7 @@ bot = Cinch::Bot.new do
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = ""
-    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin, ProfilePlugin]
+    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin, ProfilePlugin, ComboPlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"], :smogon_password => ENV["smogon_password"]}
   end

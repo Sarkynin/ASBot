@@ -10,9 +10,9 @@ require 'yaml'
 class QuotesPlugin
   include Cinch::Plugin
 
-  match /!addquote (.+)/i,  method: :addquote
-  match /!quote (.+)/i,     method: :quote
-  match "!quote",           method: :quote
+  match /^!addquote (.+)/i,  method: :addquote
+  match /^!quote (.+)/i,     method: :quote
+  match "^!quote",           method: :quote
 
   def initialize(*args)
     super
