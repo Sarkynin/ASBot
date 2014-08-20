@@ -11,7 +11,7 @@ class ASBStatsPlugin
     $pokesheet.rows.each do |row|
       if BotUtils.condense_name(poke[0..3]) =~ /(mega|primal)/ && BotUtils.condense_name(poke) != "meganium"
 
-        if BotUtils.condense_name(row[1]) == BotUtils.condense_name(poke.sub('mega')) && row[0] =~ /(Primal|Mega)/
+        if BotUtils.condense_name(row[1]) == BotUtils.condense_name(poke.sub('mega', '')) && row[0] =~ /(Primal|Mega)/
           if row[3].include?(row[4])
             BotUtils.msgtype_reply(m, msgtype, "#{row[0]} #{row[1]} - #{row[2]} | #{row[3].gsub(", ", "/")} | #{row[5]}/#{row[6]}/#{row[7]}/#{row[8]}/#{row[9]}/#{row[10]} | #{row[11]} BRT | Size: #{row[12]} | Weight: #{row[13]} | +Spe nat. Acc Boost: #{row[14]}% | CC cost: #{row[16]} | #{row[17]} CHP | Sig. Item: #{row[18]} | Boosted Stats: #{row[19]}")
             return
