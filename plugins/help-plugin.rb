@@ -3,7 +3,7 @@ require_relative '../utils/utils.rb'
 
 class HelpPlugin
   include Cinch::Plugin
-  def initialize
+  def initialize(*args)
     @commands = {
       "asbstats" => "!asbstats <pokemon> - Gives a Pokémon's stats and informations in ASB.",
       "asbmove" => "!asbmove <move> - Gives a move's data and description in ASB.",
