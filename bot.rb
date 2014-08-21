@@ -24,7 +24,7 @@ bot = Cinch::Bot.new do
     c.channels = ["#capasb", "#calcasb"]
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
-    c.plugins.prefix = ""
+    c.plugins.prefix = //
     c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"], :smogon_password => ENV["smogon_password"]}

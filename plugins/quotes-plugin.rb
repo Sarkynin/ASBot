@@ -12,7 +12,7 @@ class QuotesPlugin
 
   match /^!addquote (.+)/i,  method: :addquote
   match /^!quote (.+)/i,     method: :quote
-  match "^!quote",           method: :quote
+  match "!quote",           method: :quote
 
   def initialize(*args)
     super

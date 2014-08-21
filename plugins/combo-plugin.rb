@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ComboPlugin
   include Cinch::Plugin
 
-  match /^(!|@)combo (\d+)$/i,           method: :combosame
+  match /^(!|@)combo (\d+)$/i,            method: :combosame
   match /^(!|@)combo (\d+), *(\d+)$/i,    method: :combodifferent
 
   def combosame(m, msgtype, energy)
