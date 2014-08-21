@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class HelpPlugin
   include Cinch::Plugin
 
-  commands = {
+  @commands = {
     "asbstats" => "!asbstats <pokemon> - Gives a Pokémon's stats and informations in ASB.",
     "asbmove" => "!asbmove <move> - Gives a move's data and description in ASB.",
     "asbility" => "!asbility <ability> - Gives an ability's data and description in ASB.",
@@ -25,14 +25,14 @@ class HelpPlugin
   match /^(!|@)asbot (.+)$/i,   method: :asbot_commandhelp
   
   def asbot_commands(m, msgtype)
-    BotUtils.msgtype_reply(m, msgtype, "Available commands: #{commands.keys.join(", ")}")
+    BotUtils.msgtype_reply(m, msgtype, "Available commands: #{@commands.keys.join(", ")}")
   end
 
   def asbot_commandhelp(m, msgtype, command)
     if commands[BotUtils.condense_name(command)] == nil
       BotUtils.msgtype_reply("Command not found. To see available commands, type \"#{msgtype}asbot\".")
     else
-      BotUtils.msgtype_reply(m, msgtype, "#{command}: #{commands[BotUtils.condense_name(command)]}")
+      BotUtils.msgtype_reply(m, msgtype, "#{command}: #{@commands[BotUtils.condense_name(command)]}")
     end
   end
 
