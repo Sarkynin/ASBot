@@ -1,5 +1,5 @@
 require 'cinch'
-require '../utils/utils.rb'
+require_relative '../utils/utils.rb'
 
 class HelpPlugin
   include Cinch::Plugin
