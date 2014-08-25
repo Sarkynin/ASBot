@@ -1,23 +1,7 @@
 require 'cinch'
-require 'google_drive'
+require 'require_all'
 
-require_relative './plugins/speed-plugin'
-require_relative './plugins/roll-plugin'
-require_relative './plugins/combo-plugin'
-
-require_relative './plugins/asbmove-plugin'
-require_relative './plugins/asbstats-plugin'
-require_relative './plugins/asbility-plugin'
-require_relative './plugins/asbitem-plugin'
-require_relative './plugins/asbnature-plugin'
-require_relative './plugins/asbtype-plugin'
-require_relative './plugins/profile-plugin'
-
-require_relative './plugins/blame-plugin'
-require_relative './plugins/no-plugin'
-require_relative './plugins/quotes-plugin'
-require_relative './plugins/help-plugin'
-require_relative './plugins/dccheck-plugin'
+require_all 'plugins' 
 
 bot = Cinch::Bot.new do
   configure do |c|
