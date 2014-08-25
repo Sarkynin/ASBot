@@ -17,6 +17,7 @@ require_relative './plugins/blame-plugin'
 require_relative './plugins/no-plugin'
 require_relative './plugins/quotes-plugin'
 require_relative './plugins/help-plugin'
+require_relative './plugins/dccheck-plugin'
 
 bot = Cinch::Bot.new do
   configure do |c|
