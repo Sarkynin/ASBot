@@ -42,7 +42,7 @@ class MarkovPlugin
         end
       end
       sentence = @chain.generate(10, seed).join(' ') + '.'
-      if sentence = '.'
+      if sentence == '.'
         m.reply("(#{m.user.nick}) #{sentence}")
       else
         @chain.add_words(text)
