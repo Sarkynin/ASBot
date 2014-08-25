@@ -21,18 +21,20 @@ class QuotesPlugin
   end
 
   def addquote(m, quote)
-    # make the quote
-    new_quote = { "quote" => quote, "added_by" => m.user.nick, "created_at" => Time.now, "deleted" => false }
-    # add it to the list
-    existing_quotes = get_quotes || []
-    existing_quotes << new_quote
-    # find the id of the new quote and set it based on where it was placed in the quote list
-    new_quote_index = existing_quotes.index(new_quote)
-    existing_quotes[new_quote_index]["id"] = new_quote_index + 1
-    # write it to the gist
-    Gist.gist(YAML.dump(existing_quotes), {:update => @quotes_address, :filename => 'quotes.rb'})
-    # send reply that quote was added
-    m.reply "#{m.user.nick}: Quote successfully added as ##{new_quote_index + 1}."
+    if BotUtils.auth?(m, m.user.nick)
+      # make the quote
+      new_quote = { "quote" => quote, "added_by" => m.user.nick, "created_at" => Time.now, "deleted" => false }
+      # add it to the list
+      existing_quotes = get_quotes || []
+      existing_quotes << new_quote
+      # find the id of the new quote and set it based on where it was placed in the quote list
+      new_quote_index = existing_quotes.index(new_quote)
+      existing_quotes[new_quote_index]["id"] = new_quote_index + 1
+      # write it to the gist
+      Gist.gist(YAML.dump(existing_quotes), {:update => @quotes_address, :filename => 'quotes.rb'})
+      # send reply that quote was added
+      m.reply "#{m.user.nick}: Quote successfully added as ##{new_quote_index + 1}."
+    end
   end
 
   def quote(m, search = nil)

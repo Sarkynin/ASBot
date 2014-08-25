@@ -19,4 +19,7 @@ module BotUtils
   def self.msgtype_reply(m, msgtype, string)
     msgtype == "!" ? m.user.notice(string) : m.reply(string)
   end
+  def self.auth?(m, user)
+    return Channel.voiced?(m.user.nick) || Channel.half_opped?(m.user.nick) || Channel.opped?(m.user.nick)
+  end
 end
