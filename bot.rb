@@ -1,4 +1,5 @@
 require 'cinch'
+require 'google_drive'
 require 'require_all'
 
 require_all 'plugins' 
