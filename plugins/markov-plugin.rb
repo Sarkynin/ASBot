@@ -49,11 +49,12 @@ class MarkovPlugin
         Gist.gist(JSON.dump(@chain.nodes), {:update => @chain_address, :filename => 'sentences.rb'})
       end
     end
+  end
 
-    def addbook(m, bookurl)
-      if m.user.nick == "apt-get"
-        chain.add_words(open(bookurl).scan(/[A-Za-z0-9\'\-]+/).join(' '))
-        m.reply("Book added.")
-      end
+  def addbook(m, bookurl)
+    if m.user.nick == "apt-get"
+      chain.add_words(open(bookurl).scan(/[A-Za-z0-9\'\-]+/).join(' '))
+      m.reply("Book added.")
     end
   end
+end
