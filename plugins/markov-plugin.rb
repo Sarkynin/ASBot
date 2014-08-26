@@ -53,7 +53,7 @@ class MarkovPlugin
 
   def addbook(m, bookurl)
     if m.user.nick == "apt-get"
-      @chain.add_words(open(bookurl).scan(/[A-Za-z0-9\'\-]+/).join(' '))
+      @chain.add_words(open(bookurl).read.scan(/[A-Za-z0-9\'\-]+/).join(' '))
       m.reply("Book added.")
     end
   end
