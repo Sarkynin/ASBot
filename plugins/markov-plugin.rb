@@ -43,7 +43,11 @@ class MarkovPlugin
       end
       sentence = @chain.generate(10, seed).join(' ') + '.'
       if sentence == '.'
+        sentence = @chain.generate(10).join(' ') + '.'
         m.reply("(#{m.user.nick}) #{sentence}")
+      else
+        m.reply("(#{m.user.nick}) #{sentence}")
+      end
       else
         @chain.add_words(text)
         Gist.gist(JSON.dump(@chain.nodes), {:update => @chain_address, :filename => 'sentences.rb'})
@@ -54,6 +58,7 @@ class MarkovPlugin
   def addbook(m, bookurl)
     if m.user.nick == "apt-get"
       @chain.add_words(open(bookurl).read.scan(/[A-Za-z0-9\'\-]+/).join(' '))
+      Gist.gist(JSON.dump(@chain.nodes), {:update => @chain_address, :filename => 'sentences.rb'})
       m.reply("Book added.")
     end
   end
