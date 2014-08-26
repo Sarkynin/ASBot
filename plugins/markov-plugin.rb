@@ -48,13 +48,12 @@ class MarkovPlugin
       else
         m.reply("(#{m.user.nick}) #{sentence}")
       end
-      else
-        @chain.add_words(text)
-        Gist.gist(JSON.dump(@chain.nodes), {:update => @chain_address, :filename => 'sentences.rb'})
-      end
+    else
+      @chain.add_words(text)
+      Gist.gist(JSON.dump(@chain.nodes), {:update => @chain_address, :filename => 'sentences.rb'})
     end
   end
-
+  
   def addbook(m, bookurl)
     if m.user.nick == "apt-get"
       @chain.add_words(open(bookurl).read.scan(/[A-Za-z0-9\'\-]+/).join(' '))
