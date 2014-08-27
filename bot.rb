@@ -11,10 +11,10 @@ bot = Cinch::Bot.new do
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = //
-    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin, DCCheckPlugin, YesPlugin, ShufflePlugin, MarkovPlugin]
+    c.plugins.plugins = [SpeedPlugin, ASBMovePlugin, ASBStatsPlugin, ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin, ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin, QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin, DCCheckPlugin, YesPlugin, ShufflePlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"], :smogon_password => ENV["smogon_password"]}
-    c.plugins.options[MarkovPlugin] = {:chain_address => ENV["chain_url"]}
+#    c.plugins.options[MarkovPlugin] = {:chain_address => ENV["chain_url"]}
   end
 
   on :connect do |m|
