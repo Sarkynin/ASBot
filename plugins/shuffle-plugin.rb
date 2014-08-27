@@ -8,7 +8,7 @@ class ShufflePlugin
 
   def execute(m, msgtype, shufflenumber)
     unless shufflenumber.to_i < 0
-      arrstring = (1..shufflenumber.to_i).to_a.join(" ")
+      arrstring = (1..shufflenumber.to_i).to_a.shuffle.join(" ")
       BotUtils.msgtype_reply(m, msgtype, "Numbers from 1 to #{shufflenumber} shuffled: #{arrstring}")
     end
   end
