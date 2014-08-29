@@ -12,7 +12,7 @@ class SpeedPlugin
     calcaccuracy = true
     validdetailsvalues = %w[1/2 1/3 2/3 FE]
 
-    if details == "fe"
+    if BotUtils.condense_name(details) == "fe"
       currentevo, finalevo = 1.0, 1.0
     elsif %w[1/2 1/3 2/3].include?(details)
       detailsarray = details.split("/")
