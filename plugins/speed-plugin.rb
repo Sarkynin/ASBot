@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class SpeedPlugin
   include Cinch::Plugin
 
-  match /^(!|@)speed (\d+) ?(.*)?/
+  match /^(!|@)speed (\d+) ?(.*)?/i
 
   def execute(m, msgtype, speed, details)
     speedplus = speed.to_f*1.15
@@ -12,7 +12,7 @@ class SpeedPlugin
     calcaccuracy = true
     validdetailsvalues = %w[1/2 1/3 2/3 FE]
 
-    if details == "FE"
+    if details == "fe"
       currentevo, finalevo = 1.0, 1.0
     elsif %w[1/2 1/3 2/3].include?(details)
       detailsarray = details.split("/")
