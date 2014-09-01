@@ -1,5 +1,5 @@
 # ASBot
 
-Commands and such [here](http://sarkynin.github.io/ASBot/).
+use `!asbot` to look up commands.
 
 Pull requests accepted.
