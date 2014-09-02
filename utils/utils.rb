@@ -11,6 +11,7 @@ $itemsheet = $googledrivesession.spreadsheet_by_key("0AiVdR0Jv-e1hdDZxVlpFOW5yRG
 
 Gist.login!(:username => ENV['githubnick'], :password => ENV["githubpass"])
 
+
 module BotUtils
   def self.condense_name(name)
     return name.downcase.gsub(/[^A-Za-z0-9]/, '')
