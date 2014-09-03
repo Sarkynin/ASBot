@@ -14,6 +14,7 @@ class LearnPlugin
   def execute(m, msgtype, pokemon, move)
 
     pokerow = @db[:pokemon].filter(:identifier => BotUtils.condense_name(pokemon)).first
+    p pokerow
     if pokerow.nil?
       BotUtils.msgtype_reply(m, msgtype, "Pokémon not found.")
       return
@@ -21,7 +22,7 @@ class LearnPlugin
     pokeid = pokerow[:id]
     pokename = @db[:pokemon_species_names].filter(:local_language_id => 9, :pokemon_species_id => pokerow[:species_id]).first
 
-    moveid = @db[:moves].filter(:identifier => BotUtils.condense_name(move)).first
+    moveid = @db[:moves].filter(:identifier => BotUtils.condense_name(move)).first[:id]
     if moveid.nil?
       BotUtils.msgtype_reply(m, msgtype, "Move not found.")
       return
