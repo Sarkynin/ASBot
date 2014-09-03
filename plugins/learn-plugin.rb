@@ -20,14 +20,14 @@ class LearnPlugin
       return
     end
     pokeid = pokerow[:id]
-    pokename = @db[:pokemon_species_names].filter(:local_language_id => 9, :pokemon_species_id => pokerow[:species_id]).first
+    pokename = @db[:pokemon_species_names].filter(:local_language_id => 9, :pokemon_species_id => pokerow[:species_id]).first[:name]
 
     moveid = @db[:moves].filter(:identifier => BotUtils.condense_name(move)).first[:id]
     if moveid.nil?
       BotUtils.msgtype_reply(m, msgtype, "Move not found.")
       return
     end
-    movename  = @db[:move_names].filter(:local_language_id => 9, :move_id => moveid).first
+    movename  = @db[:move_names].filter(:local_language_id => 9, :move_id => moveid).first[:name]
 
     movefound = !@db[:pokemon_moves].filter(:pokemon_id => pokeid, :move_id => moveid).first.nil?
 
