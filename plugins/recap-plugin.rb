@@ -160,7 +160,7 @@ class RecapPlugin
 
   def replay(msg)
     #check if user is still in cooldown
-    return if @users[msg.channel][BotUtils.condense_name(msg.user.nick)]
+    return if !@users[msg.channel][BotUtils.condense_name(msg.user.nick)].nil?
 
     # Informative preamble
     if @mode == :max_age
