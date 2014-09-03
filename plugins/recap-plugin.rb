@@ -92,6 +92,9 @@ class RecapPlugin
     @history_mutex = Mutex.new
     @history       = {}
     @users         = {}
+
+    config[:channels].each {|channel| @history[channel] = []
+                                      @users[channel] = {} }
   end
 
   def on_channel(msg)
@@ -160,13 +163,13 @@ class RecapPlugin
 
   def replay(msg)
     #check if user is still in cooldown
-    return if !@users[msg.channel][BotUtils.condense_name(msg.user.nick)].nil?
+    return if @users[msg.channel][BotUtils.condense_name(msg.user.nick)]
 
     # Informative preamble
     if @mode == :max_age
       msg.user.notice("Here are the messages of the last #{@max_age} seconds:")
     else
-      msg.user.notice("Here are the last #{@max_messages} messages:")
+      msg.user.notice("Here are the last #{@history[msg.channel].count} messages:")
     end
 
     # Actual historic(al) response
@@ -176,17 +179,20 @@ class RecapPlugin
       end
       msg.user.notice(r.chomp)
     end
-    @users << BotUtils.condense_name(msg.user.nick)[60]
+    @users[msg.channel][BotUtils.condense_name(msg.user.nick)] = 60
   end
 
-  def check_user_cooldown(msg)
-    @users.map! do |user|
-      if @users[BotUtils.condense_name(user)] == 0
-        @users.delete(BotUtils.condense_name(user))
+  def check_user_cooldown
+    @users.each do |channel|
+    next if channel.empty?
+    channel.each do |user|
+      if @users[channel][user] == 0
+        @users.delete(channel[user])
       else
-        @users[BotUtils.condense_name(user)] -= 1
+        @users[channel][user] -= 1
       end
     end
+  end
   end
 
   private

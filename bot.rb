@@ -7,7 +7,7 @@ require_all 'plugins'
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.synirc.net"
-    c.channels = ["#capasb", "#calcasb", "#pokemon", "#dogbirds"]
+    c.channels = ["#capasb", "#calcasb", "#dogbirds"]
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = //
@@ -17,7 +17,8 @@ bot = Cinch::Bot.new do
     c.plugins.options[RecapPlugin] = {
       :mode => :max_messages,
       :max_messages => 25,
-      :time_format => "%H:%M"
+      :time_format => "%H:%M",
+      :channels => c.channels
     }
 
   end
