@@ -178,7 +178,7 @@ class RecapPlugin
   def check_user_cooldown(msg)
     @users.map! do |user|
       if @users[BotUtils.condense_name(user)] == 0
-        @users.delete(BotUtils.condense_name(user)
+        @users.delete(BotUtils.condense_name(user))
       else
         @users[BotUtils.condense_name(user)] -= 1
       end
