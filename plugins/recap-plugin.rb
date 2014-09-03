@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 #
+# Channel-specific history added by me; original information below
+#
 # = Cinch history plugin
 # This plugin adds a non-persistant, short-time memory to Cinch that allows
 # users to replay part of the session Cinch currently observers. This plugin
@@ -80,7 +82,7 @@ class RecapPlugin
   listen_to :join,    :method => :on_join
   timer 60,           :method => :check_message_age
   timer 60,           :method => :check_user_cooldown
-  match /^!recap$/i,  :method => :replay
+  match /^!recap$/i,  :method => :replay, :react_on => :channel
 
   def on_connect(*)
     @mode          = config[:mode]         || :max_messages
@@ -88,7 +90,7 @@ class RecapPlugin
     @max_age       = (config[:max_age]     || 5 ) * 60
     @timeformat    = config[:time_format]  || "%H:%M"
     @history_mutex = Mutex.new
-    @history       = []
+    @history       = {}
     @users         = {}
   end
 
@@ -96,7 +98,7 @@ class RecapPlugin
     return if msg.message.start_with?("\u0001")
 
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, msg.user.nick, msg.message)
+      @history[msg.channel] << Entry.new(msg.time, msg.user.nick, msg.message)
 
       if @mode == :max_messages
         # In :max_messages mode, let messages over the limit just
@@ -108,19 +110,19 @@ class RecapPlugin
 
   def on_topic(msg)
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "##", "#{msg.user.nick} changed the topic to “#{msg.channel.topic}”")
+      @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} changed the topic to “#{msg.channel.topic}”")
     end
   end
 
   def on_away(msg)
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "##", "#{msg.user.nick} is away (“#{msg.message}”)")
+      @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} is away (“#{msg.message}”)")
     end
   end
 
   def on_unaway(msg)
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "##" "#{msg.user.nick} is back")
+      @history[msg.channel] << Entry.new(msg.time, "##" "#{msg.user.nick} is back")
     end
   end
 
@@ -128,19 +130,19 @@ class RecapPlugin
     return unless msg.message =~ /^\u0001ACTION(.*?)\u0001/
 
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "**", "#{msg.user.nick} #{$1.strip}")
+      @history[msg.channel] << Entry.new(msg.time, "**", "#{msg.user.nick} #{$1.strip}")
     end
   end
 
   def on_leaving(msg, user)
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "<=", "#{user.nick} left the channel")
+      @history[msg.channel] << Entry.new(msg.time, "<=", "#{user.nick} left the channel")
     end
   end
 
   def on_join(msg)
     @history_mutex.synchronize do
-      @history << Entry.new(msg.time, "=>", "#{msg.user.nick} entered the channel")
+      @history[msg.channel] << Entry.new(msg.time, "=>", "#{msg.user.nick} entered the channel")
     end
   end
 
@@ -150,13 +152,15 @@ class RecapPlugin
     return unless @mode == :max_age
 
     @history_mutex.synchronize do
-      @history.delete_if{|entry| Time.now - entry.time > @max_age}
+      @history.each do |key|
+        @history[key].delete_if{|entry| Time.now - entry.time > @max_age}
+      end
     end
   end
 
   def replay(msg)
     #check if user is still in cooldown
-    return if @users[BotUtils.condense_name(msg.user.nick)]
+    return if @users[msg.channel][BotUtils.condense_name(msg.user.nick)]
 
     # Informative preamble
     if @mode == :max_age
@@ -167,7 +171,7 @@ class RecapPlugin
 
     # Actual historic(al) response
     @history_mutex.synchronize do
-      r = @history.reduce("") do |answer, entry|
+      r = @history[msg.channel].reduce("") do |answer, entry|
         answer + format_entry(entry)
       end
       msg.user.notice(r.chomp)
