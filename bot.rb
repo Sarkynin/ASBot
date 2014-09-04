@@ -18,7 +18,8 @@ bot = Cinch::Bot.new do
       :mode => :max_messages,
       :max_messages => 25,
       :time_format => "%H:%M",
-      :channels => c.channels
+      :channels => c.channels,
+      :cooldown => 60
     }
 
   end

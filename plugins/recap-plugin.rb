@@ -92,6 +92,7 @@ class RecapPlugin
     @history_mutex = Mutex.new
     @history       = {}
     @users         = {}
+    @cooldown      = config[:cooldown]     || 60
 
     config[:channels].each {|channel| @history[channel] = []
                                       @users[channel] = {} }
@@ -179,7 +180,7 @@ class RecapPlugin
       end
       msg.user.notice(r.chomp)
     end
-    @users[msg.channel][BotUtils.condense_name(msg.user.nick)] = 60
+    @users[msg.channel][BotUtils.condense_name(msg.user.nick)] = @cooldown
   end
 
   def check_user_cooldown
