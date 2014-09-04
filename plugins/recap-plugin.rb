@@ -107,7 +107,7 @@ class RecapPlugin
         if @mode == :max_messages
         # In :max_messages mode, let messages over the limit just
         # fall out of the history.
-        (@history[msg.channel].shift; puts "removed from history") if @history[msg.channel].length > @max_messages
+        @history[msg.channel].shift if @history[msg.channel].length > @max_messages
       end
     end
   end
@@ -184,12 +184,9 @@ class RecapPlugin
   end
 
   def check_user_cooldown
-    @users.each do |channel|
-      p channel
-      next if channel.empty?
-      channel.each do |user|
-        p user
-        p @users
+    @users.each do |channel, users|
+      next if users.empty?
+      users.each do |user|
         if @users[channel][user] == 0
           @users.delete(channel[user])
         else
