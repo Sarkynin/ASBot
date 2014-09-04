@@ -27,7 +27,7 @@ class HelpPlugin
       "quote" => "!quote [Quote ID | Search term] - Displays a random quote from the quote database. If a quote ID is used, the quote with that ID will be displayed. If a search term is entered, a random quote that includes the search term will be displayed.",
       "dc-check" => "\"dc check\" - Returns a message. Used to test if you are still connected to the server.",
       "recap" => "!recap - Returns the last 25 messages. Useful to see the context of a discussion when joining a channel.",
-      "shuffle" => "!shuffle <number> - Builds up an array from 1 to the number entered, shuffles the numbers, and returns the array."
+      "shuffle" => "!shuffle <number> - Builds up an array from 1 to the number entered, shuffles the numbers, and returns the array.",
       "source" => "https://github.com/sarkynin/asbot"
     }
   end
