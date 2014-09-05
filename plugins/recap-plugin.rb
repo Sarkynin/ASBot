@@ -184,6 +184,7 @@ class RecapPlugin
   end
 
   def check_user_cooldown
+    puts @history
     @users.each do |channel, users|
       next if users.empty?
       users.each do |user|
