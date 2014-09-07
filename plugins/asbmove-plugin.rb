@@ -17,8 +17,8 @@ class ASBMovePlugin
           BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+1][1]}".gsub("é","e"))
           BotUtils.msgtype_reply(m, msgtype, "Please check the NDA for the table.")
         else
-          extralines = 1
-          BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index][1]}".gsub("é","e"))
+          extralines = 2
+          BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+1][1]}".gsub("é","e"))
 
           while $movesheet.rows[index+extralines][0] == ""
             BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+extralines][1]}".gsub("é","e"))
