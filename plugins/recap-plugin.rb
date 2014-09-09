@@ -107,6 +107,7 @@ class RecapPlugin
         if @mode == :max_messages
         # In :max_messages mode, let messages over the limit just
         # fall out of the history.
+        puts @history[msg.channel].length
         @history[msg.channel].shift if @history[msg.channel].length > @max_messages
       end
     end
