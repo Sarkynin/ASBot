@@ -1,6 +1,5 @@
 require 'cinch'
 require_relative '../utils/utils.rb'
-require 'text-table'
 
 class ASBMovePlugin
   include Cinch::Plugin
