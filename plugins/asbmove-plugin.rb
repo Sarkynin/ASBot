@@ -17,34 +17,20 @@ class ASBMovePlugin
 
         if BotUtils.condense_name(row[6]) == "table"
           BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+1][1]}".gsub("é","e"))
-          if msgtype == '@'
-            BotUtils.msgtype_reply(m, msgtype, "Please use !asbmove for the table.")
-          else
-            tablearray = Array.new
-            tablearray << $movesheet.rows[index+extralines][1..15].reject &:empty?
-
-            while $movesheet.rows[index+extralines+1][0] == ""
-              uncleanedline = $movesheet.rows[index+extralines][1..15]
-              cleanedline = (uncleanedline[1..14].reject &:empty?).unshift("")
-              tablearray << cleanedline
-              extralines += 1
-            end
-            BotUtils.msgtype_reply(m, msgtype, tablearray.to_table(:first_row_is_head => true))
-          else
-            BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+1][1]}".gsub("é","e"))
-            while $movesheet.rows[index+extralines][0] == ""
-              BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+extralines][1]}".gsub("é","e"))
-              extralines += 1
-            end
+          BotUtils.msgtype_reply(m, msgtype, "Please use !asbmove for the table.")
+        else
+          BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+1][1]}".gsub("é","e"))
+          while $movesheet.rows[index+extralines][0] == ""
+            BotUtils.msgtype_reply(m, msgtype, "#{$movesheet.rows[index+extralines][1]}".gsub("é","e"))
+            extralines += 1
           end
         end
-      end
 
-      movefound = true
+        movefound = true
+      end
+    end
+    if movefound == false
+      BotUtils.msgtype_reply(m, msgtype, "Move not found.")
     end
   end
-  if movefound == false
-    BotUtils.msgtype_reply(m, msgtype, "Move not found.")
-  end
-end
 end
