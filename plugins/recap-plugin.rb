@@ -102,55 +102,59 @@ class RecapPlugin
       return if msg.message.start_with?("\u0001")
 
       @history_mutex.synchronize do
+        puts "putting in entry"
         @history[msg.channel] << Entry.new(msg.time, msg.user.nick, msg.message)
-
+        puts "checking mode"
         if @mode == :max_messages
-        # In :max_messages mode, let messages over the limit just
-        # fall out of the history.
-        puts config[:channels]
-        puts @history[msg.channel].length
-        @history[msg.channel].shift if @history[msg.channel].length > @max_messages
+          puts "mode correct"
+
+          # In :max_messages mode, let messages over the limit just
+          # fall out of the history.
+
+          puts config[:channels]
+          puts @history[msg.channel].length
+          @history[msg.channel].shift if @history[msg.channel].length > @max_messages
+        end
       end
     end
-  end
 
-  def on_topic(msg)
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} changed the topic to “#{msg.channel.topic}”")
+    def on_topic(msg)
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} changed the topic to “#{msg.channel.topic}”")
+      end
     end
-  end
 
-  def on_away(msg)
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} is away (“#{msg.message}”)")
+    def on_away(msg)
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "##", "#{msg.user.nick} is away (“#{msg.message}”)")
+      end
     end
-  end
 
-  def on_unaway(msg)
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "##" "#{msg.user.nick} is back")
+    def on_unaway(msg)
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "##" "#{msg.user.nick} is back")
+      end
     end
-  end
 
-  def on_action(msg)
-    return unless msg.message =~ /^\u0001ACTION(.*?)\u0001/
+    def on_action(msg)
+      return unless msg.message =~ /^\u0001ACTION(.*?)\u0001/
 
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "**", "#{msg.user.nick} #{$1.strip}")
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "**", "#{msg.user.nick} #{$1.strip}")
+      end
     end
-  end
 
-  def on_leaving(msg, user)
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "<=", "#{user.nick} left the channel")
+    def on_leaving(msg, user)
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "<=", "#{user.nick} left the channel")
+      end
     end
-  end
 
-  def on_join(msg)
-    @history_mutex.synchronize do
-      @history[msg.channel] << Entry.new(msg.time, "=>", "#{msg.user.nick} entered the channel")
+    def on_join(msg)
+      @history_mutex.synchronize do
+        @history[msg.channel] << Entry.new(msg.time, "=>", "#{msg.user.nick} entered the channel")
+      end
     end
-  end
 
   # In :max_age mode, remove messages from the history older than
   # the threshold.
