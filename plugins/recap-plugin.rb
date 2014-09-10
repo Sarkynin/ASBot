@@ -94,19 +94,20 @@ class RecapPlugin
     @users         = {}
     @cooldown      = config[:cooldown]     || 60
 
-    config[:channels].each {|channel| @history[channel] = []
-      @users[channel] = {} }
+    config[:channels].each do |channel|
+      @history[channel], @users[channel] = [], {}
     end
+  end
 
-    def on_channel(msg)
-      return if msg.message.start_with?("\u0001")
+  def on_channel(msg)
+    return if msg.message.start_with?("\u0001")
 
-      @history_mutex.synchronize do
-        puts "putting in entry"
-        @history[msg.channel] << Entry.new(msg.time, msg.user.nick, msg.message)
-        puts "checking mode"
-        if @mode == :max_messages
-          puts "mode correct"
+    @history_mutex.synchronize do
+      puts "putting in entry"
+      @history[msg.channel] << Entry.new(msg.time, msg.user.nick, msg.message)
+      puts "checking mode"
+      if @mode == :max_messages
+        puts "mode correct"
 
           # In :max_messages mode, let messages over the limit just
           # fall out of the history.
@@ -190,10 +191,9 @@ class RecapPlugin
   end
 
   def check_user_cooldown
-    @users.each do |channel, users|
-      next if users.empty?
-      puts users
-      users.each do |user|
+    @users.each do |channel|
+      next if @users[channel].empty?
+      @users[channel].each do |user|
         if @users[channel][user] == 0
           @users.delete(channel[user])
         else
