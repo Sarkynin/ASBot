@@ -192,6 +192,7 @@ class RecapPlugin
 
   def check_user_cooldown
     @users.each do |channel|
+      puts @users
       next if @users[channel].empty?
       @users[channel].each do |user|
         if @users[channel][user] == 0
