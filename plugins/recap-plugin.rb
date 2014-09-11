@@ -96,6 +96,8 @@ class RecapPlugin
 
     config[:channels].each do |channel|
       @history[channel], @users[channel] = [], {}
+      puts @history
+      puts @users
     end
   end
 
