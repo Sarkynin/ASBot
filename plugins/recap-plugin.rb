@@ -95,14 +95,11 @@ class RecapPlugin
     @users         = {}
     @cooldown      = config[:cooldown]     || 60
 
-    m = Monitor.new
-    m.synchronize {
-      config[:channels].each do |channel|
-        @history[channel], @users[channel] = [], {}
-        puts @history
-        puts @users
-      end
-    }
+    config[:channels].each do |channel|
+      @history[channel], @users[channel] = [], {}
+      puts @history
+      puts @users
+    end
   end
 
   def on_channel(msg)
@@ -198,8 +195,7 @@ class RecapPlugin
 
   def check_user_cooldown
     @users.each do |channel, users|
-      next if users.nil?
-      next if users.empty?
+      next if users.nil? || users.empty?
       users.each do |user, countdown|
         if countdown == 0
           @users.delete(channel[user])
