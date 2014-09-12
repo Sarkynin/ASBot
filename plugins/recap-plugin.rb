@@ -66,6 +66,7 @@
 # 
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+require 'monitor'
 
 class RecapPlugin
   include Cinch::Plugin
@@ -94,11 +95,14 @@ class RecapPlugin
     @users         = {}
     @cooldown      = config[:cooldown]     || 60
 
-    config[:channels].each do |channel|
-      @history[channel], @users[channel] = [], {}
-      puts @history
-      puts @users
-    end
+    m = Monitor.new
+    m.synchronize {
+      config[:channels].each do |channel|
+        @history[channel], @users[channel] = [], {}
+        puts @history
+        puts @users
+      end
+    }
   end
 
   def on_channel(msg)
