@@ -194,7 +194,8 @@ class RecapPlugin
 
   def check_user_cooldown
     @users.each do |channel, users|
-      next if users.nil? || users.empty?
+      next if users.nil?
+      next if users.blank?
       users.each do |user, countdown|
         if countdown == 0
           @users.delete(channel[user])
