@@ -1,6 +1,7 @@
 require 'cinch'
 require 'google_drive'
 require 'require_all'
+require 'utils/utils.rb'
 
 require_all 'plugins' 
 
@@ -25,12 +26,7 @@ bot = Cinch::Bot.new do
   end
 
   on :connect do |m|
-    $movesheet.rows[0][0]
-    $pokesheet.rows[0][0]
-    $abilitysheet.rows[0][0]
-    $itemsheet[0][0]
-    $typesheet.rows[0][0]
-    $naturesheet.rows[0][0]
+    BotUtils.updatenda
   end
 
 end
