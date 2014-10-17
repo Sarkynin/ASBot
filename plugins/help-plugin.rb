@@ -30,6 +30,7 @@ class HelpPlugin
       "shuffle" => "!shuffle <number> - Builds up an array from 1 to the number entered, shuffles the numbers, and returns the array.",
       "learn" => "!pklearn <pokemon> <move> - Checks if a pokémon can learn a move." ,
       "source" => "https://github.com/sarkynin/asbot"
+      "updatenda" => "!updatenda - Updates the local NDA database. Only accessible to VOP and up."
     }
   end
   
