@@ -1,7 +1,7 @@
 require 'cinch'
 require 'google_drive'
 require 'require_all'
-require 'utils/utils.rb'
+require_relative 'utils/utils.rb'
 
 require_all 'plugins' 
 
