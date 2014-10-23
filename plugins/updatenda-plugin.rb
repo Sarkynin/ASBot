@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class UpdateNDAPlugin
   include Cinch::Plugin
 
-  match /^!updatenda/i
+  match /^!(updatenda|ndaupdate)/i
 
   def execute(m)
     if BotUtils.auth?(m, m.user.nick)

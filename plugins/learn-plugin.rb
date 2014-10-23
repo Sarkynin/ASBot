@@ -14,7 +14,6 @@ class LearnPlugin
   def execute(m, msgtype, pokemon, move)
 
     pokerow = @db[:pokemon].filter(:identifier => BotUtils.condense_name(pokemon)).first
-    p pokerow
     if pokerow.nil?
       BotUtils.msgtype_reply(m, msgtype, "Pokémon not found.")
       return

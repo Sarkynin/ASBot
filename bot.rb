@@ -8,7 +8,7 @@ require_all 'plugins'
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.synirc.net"
-    c.channels = ["#capasb", "#calcasb", "#dogbirds"]
+    c.channels = ["#capasb", "#calcasb", "#dogbirds", "#ircasb"]
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = //
