@@ -2,8 +2,8 @@ require 'cinch'
 
 class NoPlugin
   include Cinch::Plugin
-  
-  match /^!no$/i,      method: :disapproval
+
+  match /^!no$/i,            method: :disapproval
   match /^\.\.\. *pff$/,     method: :pff
 
   def disapproval(m)
