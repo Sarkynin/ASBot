@@ -1,4 +1,4 @@
-#ruby '2.2.2'
+ruby '2.2.2'
 # A sample Gemfile
 source "https://rubygems.org"
 
