@@ -1,4 +1,4 @@
-Nrequire 'cinch'
+require 'cinch'
 require_relative '../utils/utils.rb'
 
 class HelpPlugin
