@@ -1,4 +1,4 @@
-require 'cinch'
+Nrequire 'cinch'
 require_relative '../utils/utils.rb'
 
 class HelpPlugin
@@ -31,7 +31,8 @@ class HelpPlugin
       "learn" => "!pklearn <pokemon> <move> - Checks if a pokémon can learn a move." ,
       "source" => "https://github.com/sarkynin/asbot",
       "updatenda" => "!updatenda - Updates the local NDA database.\nOnly accessible to VOP and up.",
-      "calc" => "!calc - Calculates the given expression.\nAvailable functions: round(), floor(), ceil().\nAvailables variables: pi"
+      "calc" => "!calc - Calculates the given expression.\nAvailable functions: round(), floor(), ceil().\nAvailables variables: pi",
+      "thread" => "http://www.smogon.com/forums/threads/asbot-capasb-utility-bot.3538380/"
     }
   end
   
