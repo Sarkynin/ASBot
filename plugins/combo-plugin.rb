@@ -1,6 +1,7 @@
 require 'cinch'
 require_relative '../utils/utils.rb'
 
+
 class ComboPlugin
   include Cinch::Plugin
 
@@ -8,12 +9,15 @@ class ComboPlugin
   match /^(!|@)combo (\d+), *(\d+)$/i,    method: :combodifferent
 
   def combosame(m, msgtype, energy)
+
     energycost = (energy.to_f + 2) * 3.5
+
     if energycost.round(1) - energycost.to_i == 0.5
       energycost = energycost.round - 0.5
     else
       energycost = energycost.round
     end
+
     BotUtils.msgtype_reply(m, msgtype, "Energy cost: #{energycost.round(1)}")
   end
 

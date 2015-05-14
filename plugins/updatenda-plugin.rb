@@ -1,6 +1,7 @@
 require 'cinch'
 require_relative '../utils/utils.rb'
 
+
 class UpdateNDAPlugin
   include Cinch::Plugin
 

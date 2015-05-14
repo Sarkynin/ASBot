@@ -1,3 +1,8 @@
+#/!\ CURRENTLY UNUSED COMMAND.
+#Does not work with heroku properly. Use it if you're hosting the bot yourself.
+
+
+
 # -*- coding: utf-8 -*-
 #
 # Channel-specific history added by me; original information below

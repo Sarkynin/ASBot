@@ -1,3 +1,10 @@
+#/!\ PROOF-OF-CONCEPT COMMAND.
+#Not used at the moment. Needs a database.
+#Scrapes a database to search for pokemon info.
+#database is a tweaked veekun db where every pokemon name with special characters
+#in their name was stripped of these special characters.
+#eg. "Mr. Mime" => 'mrmime'
+
 require 'cinch'
 require 'sequel'
 require_relative '../utils/utils.rb'

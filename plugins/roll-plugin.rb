@@ -5,15 +5,15 @@ require_relative '../utils/utils.rb'
 class RollPlugin
   include Cinch::Plugin
 
-  match /^(!|@)roll(\d*)? ?(\d*)?/i
+  match /^(!|@)roll(\d+)? ?(\d+)?/i
 
   def execute(m, msgtype, numberofdices, rollnumber)
     rng = Random.new
     if numberofdices.to_i >= 150
-      BotUtils.msgtype_reply(m, msgtype, "The roll is too big. Please consider using less than 150 rolls multiple times to achieve your result.")
+      BotUtils.msgtype_reply(m, msgtype, "The number of rolls is too big. Please consider using less than 150 rolls multiple times to achieve your result.")
     else
-      rollnumber.length == 0 ? rollnumber = 10000 : rollnumber = rollnumber.to_i
-      numberofdices.length == 0 ? numberofdices = 1 : numberofdices = numberofdices.to_i
+      rollnumber.nil? ? rollnumber = 10000 : rollnumber = rollnumber.to_i
+      numberofdices.nil? ? numberofdices = 1 : numberofdices = numberofdices.to_i
       if numberofdices == 1
         rollednumber = rng.rand(1..rollnumber)
         BotUtils.msgtype_reply(m, msgtype, "Rolled between 1 and #{rollnumber}: #{rollednumber}")

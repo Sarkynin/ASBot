@@ -4,7 +4,7 @@ require_relative '../utils/utils.rb'
 class ShufflePlugin
   include Cinch::Plugin
 
-  match /^(!|@)shuffle (\d*)/i
+  match /^(!|@)shuffle (\d+)/i
 
   def execute(m, msgtype, shufflenumber)
     unless shufflenumber.to_i < 0

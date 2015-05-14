@@ -1,5 +1,4 @@
 require 'cinch'
-require 'google_drive'
 require 'require_all'
 require_relative 'utils/utils.rb'
 
@@ -16,10 +15,11 @@ bot = Cinch::Bot.new do
                          ASBilityPlugin, ASBItemPlugin, ASBNaturePlugin,
                          ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin,
                          QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin,
-                         DCCheckPlugin, YesPlugin, ShufflePlugin, LearnPlugin,
+                         DCCheckPlugin, YesPlugin, ShufflePlugin,
                          UpdateNDAPlugin, CalcPlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
-    c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"], :smogon_password => ENV["smogon_password"]}
+    c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"],
+                                        :smogon_password => ENV["smogon_password"]}
     # c.plugins.options[RecapPlugin] = {
     #   :mode => :max_messages,
     #   :max_messages => 25,

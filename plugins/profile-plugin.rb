@@ -23,6 +23,9 @@ class ProfilePlugin
     if page.body.include?("No results found.")
       BotUtils.msgtype_reply(m, msgtype, "No user found.")
     else
+
+      #Look for first link
+      
       profilelink = page.search("//h3[@class=\"title\"]/a").map { |link| link['href'] }[0]
       BotUtils.msgtype_reply(m, msgtype, "#{user}'s profile: http://www.smogon.com/forums/#{profilelink}")
     end

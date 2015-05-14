@@ -2,6 +2,7 @@ require 'cinch'
 require 'dentaku'
 require_relative '../utils/utils.rb'
 
+
 class CalcPlugin
   include Cinch::Plugin
 
@@ -9,7 +10,6 @@ class CalcPlugin
 
     def initialize(*args)
       super
-
       @calculator = Dentaku::Calculator.new
 
       @calculator.add_function(
@@ -38,10 +38,15 @@ class CalcPlugin
       if result.nil?
         BotUtils.msgtype_reply(m, msgtype, "Error in the formula!")
       elsif result.is_a?(BigDecimal)
+
+        #BigDecimals show up as scientific notation, which is not acceptable
+
         BotUtils.msgtype_reply(m, msgtype, result.to_f)
       else
         BotUtils.msgtype_reply(m, msgtype, result)
       end
+
+    #Erroneous functions will make ruby crash, so we have to rescue
 
     rescue
       BotUtils.msgtype_reply(m, msgtype, "Error in the formula!")

@@ -1,3 +1,6 @@
+#/!\ CURRENTLY UNUSED COMMAND.
+#Markov chain speaker. Working.
+
 require 'cinch'
 require 'gist'
 require 'json'
