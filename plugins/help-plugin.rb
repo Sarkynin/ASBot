@@ -31,8 +31,9 @@ class HelpPlugin
       "learn" => "!pklearn <pokemon> <move> - Checks if a pokémon can learn a move." ,
       "source" => "https://github.com/sarkynin/asbot",
       "updatenda" => "!updatenda - Updates the local NDA database.\nOnly accessible to VOP and up.",
-      "calc" => "!calc - Calculates the given expression.\nAvailable functions: round(), floor(), ceil().\nAvailables variables: pi",
+      "calc" => "!calc <expression> - Calculates the given expression.\nAvailable functions: round(), floor(), ceil().\nAvailables variables: pi",
       "thread" => "http://www.smogon.com/forums/threads/asbot-capasb-utility-bot.3538380/"
+      "pick" => "!pick <argument1>, <argument2>[, <argument3>[, <argument...>]] - Picks a random sample from the provided arguments."
     }
   end
   
