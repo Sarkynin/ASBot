@@ -5,7 +5,7 @@ require_relative '../utils/utils.rb'
 class ProfilePlugin
   include Cinch::Plugin
 
-  match /^(!|@)profile (.+)/
+  match /^(!|@)profile (.+)/i
 
   def initialize(*args)
     super

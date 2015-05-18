@@ -7,7 +7,7 @@ require_all 'plugins'
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.synirc.net"
-    c.channels = ["#capasb", "#calcasb", "#dogbirds", "#ircasb", "#autismcraft"]
+    c.channels = ["#capasb", "#calcasb"]
     c.nick = ENV["botircnick"]
     c.password = ENV["botircpass"]
     c.plugins.prefix = //
@@ -16,7 +16,7 @@ bot = Cinch::Bot.new do
                          ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin,
                          QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin,
                          DCCheckPlugin, YesPlugin, ShufflePlugin,
-                         UpdateNDAPlugin, CalcPlugin]
+                         UpdateNDAPlugin, CalcPlugin, PickPlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"],
                                         :smogon_password => ENV["smogon_password"]}
