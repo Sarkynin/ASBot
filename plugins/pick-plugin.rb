@@ -23,8 +23,7 @@ class PickPlugin
       return
     end
 
-    pickarray = Array.new
-    picks.times { pickarray << options.sample }
+    pickarray = options.sample(picks)
 
     pickstring = pickarray.join(', ')
     BotUtils.msgtype_reply(m, msgtype, pickstring)
