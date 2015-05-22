@@ -14,12 +14,10 @@ class PickPlugin
     picks.nil? ? picks = 1 : picks = picks.to_i
 
     pickerror = "The number of picks should be inferior to the number of arguments."
-    BotUtils.msgtype_reply(m, msgtype, pickerror) if options.length < picks.length
+    BotUtils.msgtype_reply(m, msgtype, pickerror) if options.length < picks
 
     pickarray = Array.new
-    picks.times do
-      pickarray << options.sample
-    end
+    picks.times { pickarray << options.sample }
 
     pickstring = pickarray.join(', ')
     BotUtils.msgtype_reply(m, msgtype, pickstring)
