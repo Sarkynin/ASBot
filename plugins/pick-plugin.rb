@@ -11,18 +11,17 @@ class PickPlugin
     argumenterror = "Please provide at least 2 arguments."
     BotUtils.msgtype_reply(m, msgtype, argumenterror) if options.length < 2
 
-    pickarray = Array.new
-
     picks.nil? ? picks = 1 : picks = picks.to_i
 
     pickerror = "The number of picks should be inferior to the number of arguments."
     BotUtils.msgtype_reply(m, msgtype, pickerror) if options.length < picks.length
 
+    pickarray = Array.new
     picks.times do
       pickarray << options.sample
     end
+
     pickstring = pickarray.join(', ')
     BotUtils.msgtype_reply(m, msgtype, pickstring)
-    end
   end
 end
