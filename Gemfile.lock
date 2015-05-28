@@ -58,7 +58,7 @@ DEPENDENCIES
   cinch
   dentaku
   gist
-  google_drive (= 0.3.6)
+  google_drive
   mechanize
   pg
   realrand

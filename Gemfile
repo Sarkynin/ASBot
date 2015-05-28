@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem 'cinch'
-gem 'google_drive', '0.3.6'
+gem 'google_drive'
 gem 'gist'
 gem 'mechanize'
 gem 'require_all'
