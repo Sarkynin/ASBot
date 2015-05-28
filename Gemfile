@@ -12,3 +12,5 @@ gem 'sequel'
 gem 'pg'
 gem 'dentaku'
 gem 'realrand'
+gem 'google-api-client'
+
