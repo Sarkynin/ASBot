@@ -36,7 +36,7 @@ class RollPlugin
     if numberofdices == 1
       BotUtils.msgtype_reply(m, msgtype, "Rolled between 1 and #{rollnumber}: #{numbers_string}")
     else
-      BotUtils.msgtype_reply(m, msgtype, "Rolled #{numberofdices} dices between 1 and #{rollnumber}: #{numbers_string}")
+      BotUtils.msgtype_reply(m, msgtype, "Rolled #{numberofdices} dice between 1 and #{rollnumber}: #{numbers_string}")
     end
 
   end
