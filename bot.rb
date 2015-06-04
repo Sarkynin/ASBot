@@ -16,7 +16,7 @@ bot = Cinch::Bot.new do
                          ASBTypePlugin, RollPlugin, BlamePlugin, NoPlugin,
                          QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin,
                          DCCheckPlugin, YesPlugin, ShufflePlugin,
-                         UpdateNDAPlugin, CalcPlugin, PickPluginm RecapPlugin]
+                         UpdateNDAPlugin, CalcPlugin, PickPlugin, RecapPlugin]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"],
                                         :smogon_password => ENV["smogon_password"]}
