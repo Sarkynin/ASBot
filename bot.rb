@@ -17,9 +17,9 @@ bot = Cinch::Bot.new do
                          QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin,
                          DCCheckPlugin, YesPlugin, ShufflePlugin,
                          UpdateNDAPlugin, CalcPlugin, PickPlugin, RecapPlugin,
-			 MemoPlugin]
+			 ]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
-    c.plugins.options[MemoPlugin] = {:memos_address => ENV["memos_url"]}
+#    c.plugins.options[MemoPlugin] = {:memos_address => ENV["memos_url"]}
     c.plugins.options[ProfilePlugin] = {:smogon_username => ENV["smogon_username"],
                                         :smogon_password => ENV["smogon_password"]}
     c.plugins.options[RecapPlugin] = {
