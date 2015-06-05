@@ -12,9 +12,8 @@ class YamlMemo
 
   def initialize(*args)
     super
-      @memos_address = config[:memos_address]
-      @memos = get_memos
-    end
+    @memos_address = config[:memos_address]
+    @memos = get_memos
   end
 
   listen_to :message
