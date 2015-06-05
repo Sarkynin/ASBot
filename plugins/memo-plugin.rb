@@ -68,7 +68,7 @@ class MemoPlugin
   protected
 
   def get_memos
-    raw_memos = Gist.rawify(@memos)
+    raw_memos = Gist.rawify(@memos_address)
     opened_memos = open(raw_memos)
     read_memos = (opened_memos).read
     memos = YAML.load(read_memos)
