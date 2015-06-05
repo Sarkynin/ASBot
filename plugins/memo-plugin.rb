@@ -7,7 +7,7 @@ require 'gist'
 require 'open-uri'
 require 'cinch'
 
-class YamlMemo
+class MemoPlugin
   include Cinch::Plugin
 
   def initialize(*args)
