@@ -35,7 +35,7 @@ class MemoPlugin
       m.reply "You can't leave memos for yourself."
     elsif nick == bot.nick
       m.reply "You can't leave memos for me."
-    elsif !nick.authed?
+    elsif !m.nick.authed?
       m.reply "This nick is not registered."
     elsif @memos && @memos.key?(nick)
       msg = make_msg(m.user.nick, message, Time.now)
