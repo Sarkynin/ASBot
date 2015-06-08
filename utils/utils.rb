@@ -53,7 +53,10 @@ module BotUtils
       $abilitysheet.reload
       $typesheet.reload
       $naturesheet.reload
-      $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].reload.rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].reload.rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].reload.rows
+      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].reload
+      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].reload
+      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].reload
+      $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows
     end
   end
 end
