@@ -32,8 +32,8 @@ module BotUtils
   end
 
   def self.updatenda opts = {:reload => false}
+    nda_link = '0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE'
     if opts[:reload] == false
-      nda_link = '0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE'
       $pokesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[4]
       $naturesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[5]
       $abilitysheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[6]
