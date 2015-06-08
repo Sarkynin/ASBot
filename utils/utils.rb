@@ -44,16 +44,16 @@ module BotUtils
       $movesheet.rows[0][0]
       $pokesheet.rows[0][0]
       $abilitysheet.rows[0][0]
-      $itemsheet[0][0]
       $typesheet.rows[0][0]
       $naturesheet.rows[0][0]
+      $itemsheet[0][0]
     else
+      $movesheet.reload
       $pokesheet.reload
-      $naturesheet.reload
       $abilitysheet.reload
       $typesheet.reload
-      $movesheet.reload
-      $itemsheet.reload
+      $naturesheet.reload
+      $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].reload.rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].reload.rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].reload.rows
     end
   end
 end
