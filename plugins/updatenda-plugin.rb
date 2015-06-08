@@ -9,7 +9,7 @@ class UpdateNDAPlugin
 
   def execute(m)
     if BotUtils.auth?(m, m.user.nick)
-      BotUtils.updatenda
+      BotUtils.updatenda :reload => true
       BotUtils.msgtype_reply(m, '@', "local NDA updated.")
     end
   end
