@@ -26,8 +26,8 @@ class ASBNaturePlugin
     $naturesheet.rows.each do |row|
       if BotUtils.condense_name(row[1]).include?(BotUtils.condense_name(boost1)) && BotUtils.condense_name(row[1]).include?(BotUtils.condense_name(boost2))
         BotUtils.msgtype_reply(m, msgtype, "The corresponding nature is #{row[0]}.")
+        return
       end
-      return
     end
     BotUtils.msgtype_reply(m, msgtype, "Nature not found.")
   end
