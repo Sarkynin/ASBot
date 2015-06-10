@@ -28,10 +28,8 @@ class ASBNaturePlugin
 
   def findnature(m, msgtype, boost1, boost2)
     $naturesheet.rows.each do |row|
-      BotUtils.msgtype_reply m, msgtype, reduce_string(boost1)
-      BotUtils.msgtype_reply m, msgtype, reduce_string(boost2)
-      BotUtils.msgtype_reply m, msgtype, reduce_string(row[1])
-      if reduce_string(row[1]).include?(reduce_string(boost1)) && reduce_string(row[1]).include?(reduce_string(boost2))
+      message = reduce_string(row[1]).gsub('speed÷', '-speed').gsub('%speed', '+speed')
+      if message.include?(reduce_string(boost1)) && message.include?(reduce_string(boost2))
         BotUtils.msgtype_reply(m, msgtype, "The corresponding nature is #{row[0].strip}.")
         return
       end
