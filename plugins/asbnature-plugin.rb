@@ -1,6 +1,10 @@
 require 'cinch'
 require_relative '../utils/utils.rb'
 
+def reduce_string str
+  str.downcase.gsub(/\s+)/, "")
+end
+
 
 class ASBNaturePlugin
   include Cinch::Plugin
@@ -24,7 +28,7 @@ class ASBNaturePlugin
 
   def findnature(m, msgtype, boost1, boost2)
     $naturesheet.rows.each do |row|
-      if BotUtils.condense_name(row[1]).include?(BotUtils.condense_name(boost1)) && BotUtils.condense_name(row[1]).include?(BotUtils.condense_name(boost2))
+      if reduce_string(row[1]).include?(reduce_string(boost1)) && reduce_string(row[1]).include?(reduce_string(boost2))
         BotUtils.msgtype_reply(m, msgtype, "The corresponding nature is #{row[0].strip}.")
         return
       end
