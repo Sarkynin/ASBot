@@ -33,7 +33,8 @@ class HelpPlugin
       "updatenda" => "!updatenda - Updates the local NDA database.\nOnly accessible to VOP and up.",
       "calc" => "!calc <expression> - Calculates the given expression.\nAvailable functions: round(), floor(), ceil().\nAvailables variables: pi",
       "thread" => "http://www.smogon.com/forums/threads/asbot-capasb-utility-bot.3538380/",
-      "pick" => "!pick[number of picks] <argument1>, <argument2>[, <argument3>[, <argument...>]] - Picks a random sample from the provided arguments.\n If [number of picks] is specified, it will sample x items from the arguments."
+      "pick" => "!pick[number of picks] <argument1>, <argument2>[, <argument3>[, <argument...>]] - Picks a random sample from the provided arguments.\n If [number of picks] is specified, it will sample x items from the arguments.",
+      "findnature" => "!findnature <boost1>, <boost2> - Finds the nature corresponding to the boosts given.\nBoosts are generally given in the \"+x stat\" format."
     }
   end
   
