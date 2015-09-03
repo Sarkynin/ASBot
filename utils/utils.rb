@@ -37,30 +37,18 @@ module BotUtils
   def self.updatenda opts = {:reload => false}
     request_token
     nda_link = '0AiVdR0Jv-e1hdDZxVlpFOW5yRGQxb3NDSmVqRHNxVUE'
-    if opts[:reload] == false
-      $pokesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[4]
-      $naturesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[5]
-      $abilitysheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[6]
-      $typesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[7]
-      $movesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[8]
-      $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows
+    $pokesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[4]
+    $naturesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[5]
+    $abilitysheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[6]
+    $typesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[7]
+    $movesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[8]
+    $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows
 
-      $movesheet.rows[0][0]
-      $pokesheet.rows[0][0]
-      $abilitysheet.rows[0][0]
-      $typesheet.rows[0][0]
-      $naturesheet.rows[0][0]
-      $itemsheet[0][0]
-    else
-      $movesheet.reload
-      $pokesheet.reload
-      $abilitysheet.reload
-      $typesheet.reload
-      $naturesheet.reload
-      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].reload
-      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].reload
-      $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].reload
-      $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows
-    end
+    $movesheet.rows[0][0]
+    $pokesheet.rows[0][0]
+    $abilitysheet.rows[0][0]
+    $typesheet.rows[0][0]
+    $naturesheet.rows[0][0]
+    $itemsheet[0][0]
   end
 end
