@@ -6,6 +6,6 @@ class YololPlugin
   match /^!yolol/i
 
   def execute(m)
-    m.reply("yolol")
+    m.reply("yolol") unless m.user.nick.downcase == "matezoide"
   end
 end
