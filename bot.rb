@@ -17,6 +17,7 @@ bot = Cinch::Bot.new do
                          QuotesPlugin, ProfilePlugin, ComboPlugin, HelpPlugin,
                          DCCheckPlugin, YesPlugin, ShufflePlugin,
                          UpdateNDAPlugin, CalcPlugin, PickPlugin, RecapPlugin,
+                         YololPlugin
 			 ]
     c.plugins.options[QuotesPlugin] = {:quotes_address => ENV["quotes_url"]}
 #    c.plugins.options[MemoPlugin] = {:memos_address => ENV["memos_url"]}
