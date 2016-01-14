@@ -3,17 +3,17 @@ require 'google_drive'
 require "google/api_client"
 
 def request_token
-  # auth = Signet::OAuth2::Client.new(
-  #   token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
-  #   audience: 'https://accounts.google.com/o/oauth2/token',
-  #   scope: ["https://www.googleapis.com/auth/drive", "https://spreadsheets.google.com/feeds/"].join(' '),
-  #   issuer: ENV["googledrivelogin"],
-  #   access_type: 'offline',
-  #   signing_key: Google::APIClient::KeyUtils.load_from_pkcs12('utils/google_key.p12', ENV['p12pass'])
-  #   )
-  # auth.fetch_access_token!
+  auth = Signet::OAuth2::Client.new(
+    token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+    audience: 'https://accounts.google.com/o/oauth2/token',
+    scope: ["https://www.googleapis.com/auth/drive", "https://spreadsheets.google.com/feeds/"].join(' '),
+    issuer: ENV["googledrivelogin"],
+    access_type: 'offline',
+    signing_key: Google::APIClient::KeyUtils.load_from_pkcs12('utils/google_key.p12', ENV['p12pass'])
+    )
+  auth.fetch_access_token!
 
-  $googledrivesession = GoogleDrive.saved_session("config.json")
+  $googledrivesession = GoogleDrive.login_with_oauth(auth.access_token)
 end
 
 request_token
