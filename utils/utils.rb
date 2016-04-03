@@ -42,7 +42,7 @@ module BotUtils
     $abilitysheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[6]
     $typesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[7]
     $movesheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[8]
-    $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows
+    $itemsheet = $googledrivesession.spreadsheet_by_key(nda_link).worksheets[9].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[10].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheets[11].rows + $googledrivesession.spreadsheet_by_key(nda_link).worksheet[12].rows
 
     $movesheet.rows[0][0]
     $pokesheet.rows[0][0]
