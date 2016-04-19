@@ -52,6 +52,6 @@ module BotUtils
     $typesheet.rows[0][0]
     $naturesheet.rows[0][0]
     $itemsheet[0][0]
-    $ranksheet[0][0]
+    $ranksheet.rows[0][0]
   end
 end
