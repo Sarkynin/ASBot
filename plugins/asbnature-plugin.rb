@@ -2,7 +2,7 @@ require 'cinch'
 require_relative '../utils/utils.rb'
 
 def reduce_string str
-  str.downcase.gsub(/\s+/, "").gsub(/\d+/, "")
+  str.downcase.gsub(/\s+/, "").gsub(/\d+/, "").gsub(",", "")
 end
 
 
