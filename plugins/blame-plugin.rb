@@ -6,6 +6,7 @@ class BlamePlugin
   match /^!blame (.+)/i
 
   def execute(m, user)
+    user = user.strip
     if user.downcase == 'asbot'
       m.reply("Yeah, it's all my... hey, wait a minute!")
     else
