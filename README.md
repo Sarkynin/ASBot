@@ -4,6 +4,8 @@ This is the source code for the IRC bot on SynIRC's #capasb channel, accessible 
 
 ## Installation
 
+Heroku usage is assumed. Why, you might ask? Because I have no dedicated server, so I built this bot around being run on a heroku dyno (including the various workarounds for some of the engine's, let's say, *interesting* quirks). Shouldn't be too hard to modify the relevant parts if you're running this at home, though.
+
     $ bundle install
 Afterwards, you need to set a few environment variables on your system. These are `botircnick`, 
 `botircpass`, `githubnick`, `githubpass`, `googledrivelogin` `p12pass`, `smogon_username`, `quotes_url`, and `smogon_password`.
