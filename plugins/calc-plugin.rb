@@ -6,7 +6,7 @@ require_relative '../utils/utils.rb'
 class CalcPlugin
   include Cinch::Plugin
 
-  match /^(!|@)calc (.+)/
+  match /^(!|@)calc (.+)/i
 
     def initialize(*args)
       super
