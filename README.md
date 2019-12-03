@@ -1,6 +1,6 @@
 # ASBot
 
-This is the source code for the IRC bot on SynIRC's #capasb channel, accessible [here](irc://irc.synirc.net/capasb).
+This is the source code for the IRC bot on SynIRC's #capasb channel, accessible [here](irc://irc.synirc.net/capasb). The official instance is permanently down, due to CAP ASB no longer using IRC.
 
 ## Installation
 
